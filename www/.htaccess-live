@@ -7,6 +7,6 @@ RewriteRule services/api/loginservice/(.*)$ services/api/LoginServiceAPI.php?req
 SetEnv ROOT_PATH /home/software
 SetEnv LIB_PATH /home/software/www/shared/library
 SetEnv SERVICES_PATH /home/software/www/shared/library/services
-SetEnv UTILS_PATH /home/software/swww/hared/library/utilities
+SetEnv UTILS_PATH /home/software/www/shared/library/utilities
 SetEnv CONFIG_PATH /home/software/www/shared/library/configuration
 SetEnv WWW_PATH /home/software/www
