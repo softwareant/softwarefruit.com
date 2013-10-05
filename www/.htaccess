@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule services/api/loginservice/(.*)$ services/api/LoginServiceAPI.php?request=$1 [QSA,NC,L]
+</IfModule>
+SetEnv ROOT_PATH /Applications/MAMP/htdocs/www
+SetEnv LIB_PATH /Applications/MAMP/htdocs/www/shared/library
+SetEnv SERVICES_PATH /Applications/MAMP/htdocs/www/shared/library/services
+SetEnv UTILS_PATH /Applications/MAMP/htdocs/www/shared/library/utilities
+SetEnv CONFIG_PATH /Applications/MAMP/htdocs/www/shared/library/configuration
+SetEnv WWW_PATH /Applications/MAMP/htdocs/www

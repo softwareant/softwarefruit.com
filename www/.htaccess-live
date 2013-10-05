@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule services/api/loginservice/(.*)$ services/api/LoginServiceAPI.php?request=$1 [QSA,NC,L]
+</IfModule>
+SetEnv ROOT_PATH /home/software
+SetEnv LIB_PATH /home/software/www/shared/library
+SetEnv SERVICES_PATH /home/software/www/shared/library/services
+SetEnv UTILS_PATH /home/software/swww/hared/library/utilities
+SetEnv CONFIG_PATH /home/software/www/shared/library/configuration
+SetEnv WWW_PATH /home/software/www

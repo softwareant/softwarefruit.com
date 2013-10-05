@@ -1,5 +1,5 @@
 <?php
-require_once '/Applications/MAMP/htdocs/shared/library/utilities/RESTAPI/API.php';
+require_once getenv('UTILS_PATH').'/RESTAPI/API.php';
 class LoginServiceAPI extends API
 {
 	//protected $User;
@@ -40,6 +40,20 @@ class LoginServiceAPI extends API
 		{
 			return "Only accepts GET requests";
 		}
+	}
+	
+	protected function auth()
+	{
+		if ($this->method == 'GET')
+		{
+			
+			return "Your name is " . 'BBB';
+		}
+		else
+		{
+			return "Only accepts GET requests";
+		}
+	
 	}
 
 }
