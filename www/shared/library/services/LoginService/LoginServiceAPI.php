@@ -42,12 +42,34 @@ class LoginServiceAPI extends API
 		}
 	}
 	
+	protected function describe()
+	{
+		if ($this->method == 'GET')
+		{
+			// a.
+			// b.
+			// c.
+			$str = 'method: '.$this->method."<BR>";
+			$str .='|endpoint: '.$this->endpoint."<BR>";
+			$str .='|verb: '.$this->verb."<BR>";
+			//$str .='|args'.print_r($this->args)."<BR>";
+			$str .='|args'.$this->args."<BR>";
+			$str .='|file'.$this->file."<BR>";
+			
+			return "Function ".$str;
+		}
+		else
+		{
+			return "Only accepts GET requests";
+		}
+		
+	}
+	
 	protected function auth()
 	{
 		if ($this->method == 'GET')
 		{
-			
-			return "Your name is " . 'BBB';
+			return "Your name is " . 'BBB'.print_r($this->args);
 		}
 		else
 		{
