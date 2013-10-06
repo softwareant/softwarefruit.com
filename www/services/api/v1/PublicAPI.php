@@ -1,5 +1,5 @@
 <?php
-require_once getenv('SERVICES_PATH').'/LoginService/LoginServiceAPI.php';
+require_once getenv('SERVICES_PATH').'/ConcreteAPI.php';
 
 if (!array_key_exists('HTTP_ORIGIN', $_SERVER))
 	{
@@ -8,7 +8,7 @@ if (!array_key_exists('HTTP_ORIGIN', $_SERVER))
 	
 	try
 	{
-			$API = new LoginServiceAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
+			$API = new ConcreteAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
 			echo $API->processAPI();
 		}
 		catch (Exception $e)

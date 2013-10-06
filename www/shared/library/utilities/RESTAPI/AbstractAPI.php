@@ -1,6 +1,6 @@
 <?php
 
-abstract class API
+abstract class AbstractAPI
 {
 	/**
      * Property: method
@@ -39,10 +39,15 @@ abstract class API
         header("Access-Control-Allow-Orgin: *");
         header("Access-Control-Allow-Methods: *");
         header("Content-Type: application/json");
-
         $this->args = explode('/', rtrim($request, '/'));
+        
+        //echo $request;
+        //echo print_r($this->args);
+        
         $this->endpoint = array_shift($this->args);
-
+		//echo $this->endpoint;
+        //echo print_r($this->args);
+        
         if (array_key_exists(0, $this->args) && !is_numeric($this->args[0])) {
             $this->verb = array_shift($this->args);
         }
@@ -77,8 +82,13 @@ abstract class API
     }
 
 	public function processAPI() {
+		
         if ((int)method_exists($this, $this->endpoint) > 0) {
-            return $this->_response($this->{$this->endpoint}($this->args));
+           // echo ('endpoint:'.$this->endpoint."\n");
+           // echo ('args:'.print_r($this->args)."\n");
+           // echo ('verb:'.$this->verb."\n");
+           // echo ('method:'.$this->method ."\n");
+        	return $this->_response($this->{$this->endpoint}($this->args));
         }
         return $this->_response('', 400);
     }
