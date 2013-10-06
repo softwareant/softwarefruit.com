@@ -1,5 +1,6 @@
 <?php
 require_once getenv('UTILS_PATH').'/RESTAPI/AbstractAPI.php';
+require  getenv('SERVICES_PATH').'/LoginService/LoginServiceAPI.php';
 class ConcreteAPI extends AbstractAPI
 {
 	
@@ -26,15 +27,48 @@ class ConcreteAPI extends AbstractAPI
 	
 			
 	}
-		
+	// End Point - Noun
 	protected function users()
 	{
-		$str = 'method: '.$this->method."\n";
-		$str .='endpoint: '.$this->endpoint."\n";
-		$str .='verb: '.$this->verb."\n";
-		$str .='args'.print_r($this->args,true)."\n";
-		$str .='file'.$this->file."\n";
-		return "Function ".$str;		
+		switch ($this->method)
+		{
+			// Create or Execute Action Methods
+			case 'POST':
+				switch ($this->verb)
+				{
+					case 'login':
+						echo print_r($this->args, true);
+						$retVal = LoginServiceAPI::login($this->args);
+						break;
+					default:
+						break;
+				}
+				break;		
+			// Retrieve Methods
+			case 'GET':
+				break;
+			// Update Methods
+			case 'PUT':
+			case 'PATCH':
+				break;
+			// Delete Methods
+			case 'DELETE':
+				break;
+			// Unsupported Methods
+			default:
+				break;					
+		}		
+		if ($retVal != null && count(trim($retVal)) > 0)
+			return $retVal;
+		else 
+		{
+			$str = 'method: '.$this->method."\n";
+			$str .='endpoint: '.$this->endpoint."\n";
+			$str .='verb: '.$this->verb."\n";
+			$str .='args'.print_r($this->args,true)."\n";
+			$str .='file'.$this->file."\n";
+			return "Function ".$str;
+		}
 	}
 	
 }

@@ -19,5 +19,9 @@
 	echo 'CONFIG_PATH is '.getenv('CONFIG_PATH')."<br>";
 	echo 'WWW_PATH is '.getenv('WWW_PATH')."<br>";
 	?>
+	<form action="/api/v1/users/login" method="post">
+		<input type="text" value="" name="user">
+		<input type="submit" value="go">
+	</form>
 </body>
 </html>
